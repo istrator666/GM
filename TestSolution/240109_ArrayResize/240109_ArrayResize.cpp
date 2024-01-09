@@ -68,14 +68,28 @@ public:
             MsgBoxAssert("배열의 크기가 0일수 없습니다");
         }
 
-        NumValue = _Size;
+        if (nullptr != newArrPtr)
+        {
+            delete[] newArrPtr;
+            newArrPtr = nullptr;
+        }
+
+        newArrPtr = new int[_Size];
+        for (int i = 0; i < NumValue; i++)
+        {
+            newArrPtr[NumValue] = ArrPtr[NumValue];
+        }
+
 
         if (nullptr != ArrPtr)
         {
             Release();
         }
+        
+       //ArrPtr = new int[_Size];
 
-        ArrPtr = new int[_Size];
+       ArrPtr = newArrPtr;
+       NumValue = _Size;
     }
 
     void Release()
@@ -90,6 +104,7 @@ public:
 private:
     int NumValue = 0;
     int* ArrPtr = nullptr;
+    int* newArrPtr = nullptr;
 };
 
 
