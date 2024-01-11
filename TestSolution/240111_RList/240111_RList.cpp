@@ -153,21 +153,21 @@ public:
 	}
 
 public:
-	class reverse_iterator
+	class riterator
 	{
 		friend MyList;
 
 	public:
-		reverse_iterator()
+		riterator()
 		{
 		}
 
-		reverse_iterator(ListNode* _CurNode)
+		riterator(ListNode* _CurNode)
 			: CurNode(_CurNode)
 		{
 		}
 
-		bool operator!=(const reverse_iterator& _Other)
+		bool operator!=(const riterator& _Other)
 		{
 			return CurNode != _Other.CurNode;
 		}
@@ -188,14 +188,14 @@ public:
 		ListNode* CurNode = nullptr;
 	};
 
-	reverse_iterator rbegin()
+	riterator rbegin()
 	{
-		return reverse_iterator(End->Prev);
+		return riterator(End->Prev);
 	}
 
-	reverse_iterator rend()
+	riterator rend()
 	{
-		return reverse_iterator(Start);
+		return riterator(Start);
 	}
 
 
@@ -242,8 +242,8 @@ int main()
 			NewList.push_back(i);
 		}
 
-		MyList::reverse_iterator rStartIter = NewList.rbegin();
-		MyList::reverse_iterator rEndIter = NewList.rend();
+		MyList::riterator rStartIter = NewList.rbegin();
+		MyList::riterator rEndIter = NewList.rend();
 
 
 		for (/*std::list<int>::iterator StartIter = NewList.begin()*/
