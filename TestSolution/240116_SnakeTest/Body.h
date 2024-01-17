@@ -4,7 +4,5 @@
 class Body : public Part
 {
 
-private:
-	Part* Next = nullptr;
 };
 

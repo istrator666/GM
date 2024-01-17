@@ -72,7 +72,6 @@ void Head::Update()
 	}
 
 	Body* CurBody = BodyManager::GetCurBody();
-	Part* newNode = new Body(*CurBody);
 
 	if (CurBody->GetPos() == GetPos())
 	{
