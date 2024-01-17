@@ -9,6 +9,7 @@
 //    내가 이동하는 방향의 반대방향으로는 가면 안된다.
 // 2. 내가 이동을 해서 CurBody를 획득했다면 그 다음부터 그 바디는 나를 따라와야 한다.
 
+
 void Head::Update()
 {
 	int InputCount = _kbhit();
@@ -75,17 +76,23 @@ void Head::Update()
 
 	if (CurBody->GetPos() == GetPos())
 	{
-
+		
+		GetLastTail();
 		Back = CurBody;
 		Back->SetRenderChar('@');
+
+		//Part* LastBack = this;
+
+		//while (nullptr != LastBack->GetBack())
+		//{
+		//	LastBack = LastBack->GetBack();
+		//}
+
+		//LastBack->SetBack(CurBody);
 			
 
 		BodyManager::ResetBody();
 	}
 
-	if (nullptr != Back)
-	{
-		Back->SetPos(PrevHeadpos);
-		Back->GetPos();
-	}
+	SnakeMove(PrevHeadpos);
 }
